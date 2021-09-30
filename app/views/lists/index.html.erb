@@ -1,5 +1,26 @@
-<% @lists.each do |list| %>
-    <h2><%= link_to list.name, list %></h2>
-<% end %>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12 my-3">
+      <h1>All your lists</h1>
+    </div>
+  </div>
 
-<%= link_to "Add list", new_list_path(@list) %>
+  <div class="row">
+    <% @lists.each do |list| %>
+      <div class="col-4">
+        <div class="card">
+          <% if list.photo.attached? %>
+          <div class="card-image" style="background-image: url('<%= cl_image_path list.photo.key %>')"></div>
+          <% else%>
+          <div class="card-image" style="background-image: url('https://us.123rf.com/450wm/urfandadashov/urfandadashov1809/urfandadashov180901275/109135379-ic%C3%B4ne-de-vecteur-photo-non-disponible-isol%C3%A9-sur-fond-transparent-concept-de-logo-photo-non-disponibl.jpg?ver=6')"></div>
+          <% end %>
+          <div class="card-content">
+            <div class="card-title text-center">
+              <h4><%= link_to list.name, list %></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

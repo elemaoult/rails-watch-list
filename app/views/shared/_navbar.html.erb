@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand-lg">
+
+  <%= link_to 'Watch List', root_path, class: 'navbar-brand' %>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="ml-auto flex">
+
+      <button class="btn btn-outline-primary my-2 my-sm-0"><%= link_to "Add list", new_list_path(@list) %></button>
+    </div>
+
+  </div>
+</nav>

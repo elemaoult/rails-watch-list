@@ -1,11 +1,35 @@
-<h2><%= @list.name %></h2>
-<br>
+<div class="container mt-3">
+  <div class="row">
+    <h1><%= @list.name %></h1>
+  </div>
+  <div class="row-film">
+  <% @list.bookmarks.each do |bookmark|%>
+    <div class="card-film">
+      <img src="https://source.unsplash.com/random/200x200" class="avatar">
+      <h4 class="text-center"><%= bookmark.movie.title%></h4>
+      <span class="text-center"><%= bookmark.comment%></span>
+    </div>
+  <%end%>
+  
+  <div class="row">
+    <div class="col d-flex justify-content-center text-align-center">
+      <button class="btn btn-outline-success my-2 my-sm-0"><%= link_to "Add a bookmark", new_list_bookmark_path(@list) %></button>
+    </div>
+    </div>
+  </div>
+  <div class="row buttons">
+    <div class="col-6 d-flex justify-content-center text-align-center">
+      <button class="btn btn-outline-primary my-2 my-sm-0"><%= link_to "Go back to index", root_path %></button>
+    </div>
+    <div class="col-6 d-flex justify-content-center text-align-center">
+      <button class="btn btn-outline-danger my-2 my-sm-0"><%= link_to "Remove List", list_path(@list),
+                    method: :delete, 
+                    data: { confirm: "Are you sure?" }
+                    %></button>
+    </div>
+  </div>
+</div>
 
-<% @list.bookmarks.each do |bookmark|%>
-  <%= bookmark.movie.title%>
-<%end%>
-
-<br>
-
-<%= link_to "Go back to index", root_path %>
-<%= link_to "Add a bookmark", new_list_bookmark_path(@list) %>
+<%# $ bundle lock --add-platform x86_64-linux
+$ bundle install
+$ git add . ; git commit -m "Bundler fix" %>
